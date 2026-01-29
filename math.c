@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 00:38:07 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/29 11:24:55 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:12:49 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	calc_form(void)
 {
 	typedef struct s_complex
 	{
-		// double x;
-		// double y;
 		double real;
 		double i;
 
@@ -26,7 +24,7 @@ void	calc_form(void)
 	t_complex z;
 	t_complex c;
 	double temp_real;
-	// #define LIMITE 42;
+
 	int iter;
 
 	
@@ -47,6 +45,7 @@ void	calc_form(void)
 		//adicionando a segunda parte da fórmula, o c
 		z.real = z.real + c.real;
 		z.i = z.i + c.i;
+		
 		iter++;
 		
 		printf("iteration n -> %d. Real: %f, Imag: %f\n", iter, z.real, z.i);

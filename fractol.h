@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 07:40:56 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/29 12:16:42 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:03:05 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@
 
 typedef unsigned char byte;
 
-struct s_complex
+typedef struct s_complex
 {
 	double	x;
 	double	y;
+	double	real;
+	double	imag;
 }	t_complex;
 
 
@@ -54,9 +56,21 @@ typedef struct s_fractol
 	//hooks member variaveis
 	double	escape_value;
 	double	iterations_definition;
+	double	hipotenusa;
 	
 }	t_fractol;
 
+//STRUCT PARA CONV_SCALE
+typedef struct s_conv_scale
+{
+	double	old_min;
+	double	old_size;
+	double	new_size;
+	double	distance_abs_start;
+	double  rel_distance_traveled;
+	double	new_scale;
+	double	final_coord;
+}	t_conv_scale;
 
 
 //FUNÇÕES DE ESTUDO
@@ -66,7 +80,8 @@ typedef struct s_fractol
 
 void	fractol_init(t_fractol *fractol);
 void	data_init(t_fractol *fractol);
-
-
+double	conv_scale(double pixel_coord, double new_max, double new_min, double old_max);
+void	my_pixel_put(t_img *img, int x, int y, int color);
+t_complex	calc_mandelbrot(t_complex z1, t_complex z2);
 
 #endif

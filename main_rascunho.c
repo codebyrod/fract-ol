@@ -1,45 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_rascunho.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 05:56:42 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/25 23:07:10 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:29:33 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	my_pixel_put(t_img *img, int x, int y, int color)
+t_complex   sum_complex(t_complex z1, t_complex z2)
 {
-	// int	offset;
-	int	displacement; //DESLOCAMENTO
-	int conv_bit_to_byte; //CONVERTE BIT EM BYTES
-	char *addr_to_drawing; //ENDEREÇO PARA ESCREVER
-	unsigned int *int_addr_drawing; //ENDEREÇO DO BLOCO PARA ESCREVER
-	
-	//CONVERTEMOS O BIT PARA BYTE
-	conv_bit_to_byte = (img->bits_per_pixel / 8);
-	
-	//CALCULAMOS O PIXEL DE ONDE IREMOS PINTAR
-	displacement = (img->line_len * y) + (x * conv_bit_to_byte);
-	
-	//FAZEMOS ARITMÉTICA DE PONTEIRO PARA IR ATÉ O PIXEL
-	addr_to_drawing = displacement + img->img_pixels_ptr;
-	
-	//CONVERTEMOS O CHAR * PARA INT *
-	int_addr_drawing = (unsigned int *)(addr_to_drawing);
-	
-	//DESREFERENCIAMOS PARA SETAR A NOVA COR;
-	*int_addr_drawing = color;
-	
-	
-	//TUDO ACIMA PODE SER RESUMIDO NESSAS DUAS LINHAS
-	// offset = (img->line_len * y) + (x * (img->bits_per_pixel / 8));
-	// *((unsigned int *)(offset + img->img_pixels_ptr)) = color;
+    t_complex   result;
 
+    result.x = z1.x + z2.x;
+    result.y = z1.y + z2.y;
+    return result;
 }
 
 void	color_screen(t_var *data, int color)
