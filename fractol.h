@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 07:40:56 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/30 05:50:17 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:07:45 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,18 @@ typedef struct s_conv_scale
 
 
 //FUNÇÕES DE ESTUDO
-// int encode_rgb(byte red, byte green, byte blue);
-// int f(int keysym, t_var *data);
 
-void	handle_pixel(int x, int y, t_fractol *fractol);
+//init
 void	fractol_init(t_fractol *fractol);
 void	data_init(t_fractol *fractol);
-double	conv_scale(double pixel_coord, double new_max, double new_min, double old_max);
-void	my_pixel_put(t_img *img, int x, int y, int color);
-t_complex	calc_mandelbrot(t_complex z1, t_complex z2);
-void	fractol_init(t_fractol *fractol);
+
+//render
 void	fractol_render(t_fractol *fractol);
+void	handle_pixel(int x, int y, t_fractol *fractol);
+
+//math
+double	conv_scale(double pixel_coord, double new_max, double new_min, double old_max);
+t_complex	calc_mandelbrot(t_complex z1, t_complex z2);
+
 
 #endif
