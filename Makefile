@@ -6,7 +6,7 @@
 #    By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/24 07:25:17 by rosousa-          #+#    #+#              #
-#    Updated: 2026/01/24 07:45:00 by rosousa-         ###   ########.fr        #
+#    Updated: 2026/01/29 20:30:35 by rosousa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ MLX_LNK     = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 SRC         = main.c \
               init.c \
               render.c \
-              events.c
-#               math_utils.c \
+              math_utils.c \
+#               events.c
 
 OBJ         = $(SRC:.c=.o)
 

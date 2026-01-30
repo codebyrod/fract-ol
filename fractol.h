@@ -6,16 +6,15 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 07:40:56 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/29 20:03:05 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/30 05:50:17 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 #define FRACTOL_H
 
-#define WIDTH 1500
-#define HEIGHT 1500
-#define SIDE_LEN 1400
+#define WIDTH 800
+#define HEIGHT 800
 #define MALLOC_ERROR 1
 
 #include "minilibx-linux/mlx.h"
@@ -25,6 +24,23 @@
 #include <stdlib.h>
 
 typedef unsigned char byte;
+
+//Fazer minhas próprias cores
+#define BLACK       0x000000  // RGB(0, 0, 0)
+#define WHITE       0xFFFFFF  // RGB(255, 255, 255)
+#define RED         0xFF0000  // RGB(255, 0, 0)
+#define GREEN       0x00FF00  // RGB(0, 255, 0)
+#define BLUE        0x0000FF  // RGB(0, 0, 255)
+
+// Psychedelic colors
+#define MAGENTA_BURST   0xFF00FF  // A vibrant magenta
+#define LIME_SHOCK      0xCCFF00  // A blinding lime
+#define NEON_ORANGE     0xFF6600  // A blazing neon orange
+#define PSYCHEDELIC_PURPLE 0x660066  // A deep purple
+#define AQUA_DREAM      0x33CCCC  // A bright turquoise
+#define HOT_PINK        0xFF66B2  // As the name suggests!
+#define ELECTRIC_BLUE   0x0066FF  // A radiant blue
+#define LAVA_RED        0xFF3300  // A bright, molten red
 
 typedef struct s_complex
 {
@@ -75,13 +91,15 @@ typedef struct s_conv_scale
 
 //FUNÇÕES DE ESTUDO
 // int encode_rgb(byte red, byte green, byte blue);
-// int	handle_input(int tecla, t_mlx_data *data);
 // int f(int keysym, t_var *data);
 
+void	handle_pixel(int x, int y, t_fractol *fractol);
 void	fractol_init(t_fractol *fractol);
 void	data_init(t_fractol *fractol);
 double	conv_scale(double pixel_coord, double new_max, double new_min, double old_max);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 t_complex	calc_mandelbrot(t_complex z1, t_complex z2);
+void	fractol_init(t_fractol *fractol);
+void	fractol_render(t_fractol *fractol);
 
 #endif

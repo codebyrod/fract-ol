@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:55:40 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/29 16:13:20 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/30 05:40:57 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	data_init(t_fractol *fractol)
 {
 	fractol->escape_value = 4;
+	fractol->iterations_definition = 42;
 	
 }
 
@@ -36,5 +37,5 @@ void	fractol_init(t_fractol *fractol)
 													&fractol->img.line_len,
 													&fractol->img.endian);
 	// events_init() // TODO
-	data_init(&fractol);
+	data_init(fractol);
 }
