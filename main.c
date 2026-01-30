@@ -6,19 +6,22 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:26:10 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/30 04:44:28 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:20:13 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractal.h"
 
 int	main()
 {
-	t_fractol fractol; //Mudar para fractral
+	t_fractal fractal; //Mudar para fractral
 	printf("Estou na main \n");
-	fractol_init(&fractol);
+	fractal_init(&fractal);
 	printf("Estou na main: passei do frac_init \n");
-	fractol_render(&fractol);
+	fractal_render(&fractal);
 	printf("Estou na main: passei do frac_rend \n");
-	mlx_loop(fractol.connection);
+	// mlx_destroy_display(fractal.connection);
+	// mlx_destroy_window(fractal.connection, fractal.window);
+	mlx_loop(fractal.connection);
+	// mlx_hook(fractal.)
 }

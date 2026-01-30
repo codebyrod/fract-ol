@@ -6,11 +6,11 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 21:57:46 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/30 05:49:05 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:20:32 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractal.h"
 
 double conv_scale(double pixel_coord, double new_max, double new_min, double old_max)
 {

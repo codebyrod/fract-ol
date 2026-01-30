@@ -6,11 +6,11 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:11:45 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/30 06:11:53 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:21:33 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractal.h"
 
 static void	my_pixel_put(t_img *img, int x, int y, int color)
 {
@@ -49,7 +49,7 @@ static void	my_pixel_put(t_img *img, int x, int y, int color)
 	// *(unsigned int *)(offset + img->img_pixels_ptr) = color;
 }
 
-void	handle_pixel(int x, int y, t_fractol *fractol)
+void	handle_pixel(int x, int y, t_fractal *fractal)
 {
 	t_complex	z;
 	t_complex	c;
@@ -65,28 +65,28 @@ void	handle_pixel(int x, int y, t_fractol *fractol)
 	c.y = conv_scale(y, 2, -2, HEIGHT);
 	
 	// printf("Estou na handle: 1\n");
-	while(i < fractol->iterations_definition)
+	while(i < fractal->iterations_definition)
 	{
 		z = calc_mandelbrot(z, c);
 		// printf("[%d]: Valor de Z.X: %f\n", i, z.x);
 		// printf("[%d]: Valor de Z.Y: %f\n", i, z.y);
-		fractol->hipotenusa = (z.x * z.x) * (z.y * z.y);
+		fractal->hipotenusa = (z.x * z.x) * (z.y * z.y);
 		// printf("Estou na handle: 2\n");
-		// printf("Hipostenusa: %f\n", fractol->hipotenusa);
-		if(fractol->hipotenusa > fractol->escape_value)
+		// printf("Hipostenusa: %f\n", fractal->hipotenusa);
+		if(fractal->hipotenusa > fractal->escape_value)
 		{
-			color = conv_scale(i, 0x000000, MAGENTA_BURST, fractol->iterations_definition);
+			color = conv_scale(i, 0x000000, MAGENTA_BURST, fractal->iterations_definition);
 			// printf("Estou na handle: 3\n");
-			my_pixel_put(&fractol->img, x, y, color);
+			my_pixel_put(&fractal->img, x, y, color);
 			return;
 		}
 		i++;
 	}
-	// color = conv_scale(i, BLUE, RED, fractol->iterations_definition);
-	my_pixel_put(&fractol->img, x, y, LIME_SHOCK);
+	// color = conv_scale(i, BLUE, RED, fractal->iterations_definition);
+	my_pixel_put(&fractal->img, x, y, LIME_SHOCK);
 }
 
-void	fractol_render(t_fractol *fractol)
+void	fractal_render(t_fractal *fractal)
 {
 	int	x;
 	int	y;
@@ -97,14 +97,14 @@ void	fractol_render(t_fractol *fractol)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			handle_pixel(x, y, fractol);
-			// my_pixel_put(fractol->img.img_ptr, x, y, 0xff0000);
+			handle_pixel(x, y, fractal);
+			// my_pixel_put(fractal->img.img_ptr, x, y, 0xff0000);
 			y++;
 		}
 		x++;
 	}
-	mlx_put_image_to_window(fractol->connection,
-							fractol->window,
-							fractol->img.img_ptr,
+	mlx_put_image_to_window(fractal->connection,
+							fractal->window,
+							fractal->img.img_ptr,
 							0, 0);
 }

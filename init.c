@@ -6,35 +6,35 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:55:40 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/30 06:03:32 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:19:33 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractal.h"
 
-void	data_init(t_fractol *fractol)
+void	data_init(t_fractal *fractal)
 {
-	fractol->escape_value = 4;
-	fractol->iterations_definition = 80;
+	fractal->escape_value = 4;
+	fractal->iterations_definition = 80;
 }
 
-void	fractol_init(t_fractol *fractol)
+void	fractal_init(t_fractal *fractal)
 {
-	fractol->connection = mlx_init();
+	fractal->connection = mlx_init();
 	// verificar se deu certo, se deu errado free;
-	fractol->window = mlx_new_window(fractol->connection,
+	fractal->window = mlx_new_window(fractal->connection,
 										WIDTH,
 										HEIGHT,
-										fractol->name_window);
+										fractal->name_window);
 	// verificar se deu certo, se deu errado free;
-	fractol->img.img_ptr = mlx_new_image(fractol->connection,
+	fractal->img.img_ptr = mlx_new_image(fractal->connection,
 										WIDTH,
 										HEIGHT);
 	// verificar se deu certo, se deu errado free;
-	fractol->img.img_pixels_ptr = mlx_get_data_addr(fractol->img.img_ptr,
-													&fractol->img.bits_per_pixel,
-													&fractol->img.line_len,
-													&fractol->img.endian);
+	fractal->img.img_pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr,
+													&fractal->img.bits_per_pixel,
+													&fractal->img.line_len,
+													&fractal->img.endian);
 	// events_init() // TODO
-	data_init(fractol);
+	data_init(fractal);
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractal.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 07:40:56 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/30 06:07:45 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:24:33 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-#define FRACTOL_H
+#ifndef FRACTAL_H
+#define FRACTAL_H
 
 #define WIDTH 800
 #define HEIGHT 800
@@ -62,7 +62,7 @@ typedef struct s_img
 
 
 //STRUCT USADA PARA PUT_IMG
-typedef struct s_fractol
+typedef struct s_fractal
 {
 	void	*connection;
 	void	*window;
@@ -74,7 +74,7 @@ typedef struct s_fractol
 	double	iterations_definition;
 	double	hipotenusa;
 	
-}	t_fractol;
+}	t_fractal;
 
 //STRUCT PARA CONV_SCALE
 typedef struct s_conv_scale
@@ -92,16 +92,17 @@ typedef struct s_conv_scale
 //FUNÇÕES DE ESTUDO
 
 //init
-void	fractol_init(t_fractol *fractol);
-void	data_init(t_fractol *fractol);
+void	fractal_init(t_fractal *fractal);
+void	data_init(t_fractal *fractal);
 
 //render
-void	fractol_render(t_fractol *fractol);
-void	handle_pixel(int x, int y, t_fractol *fractol);
+void	fractal_render(t_fractal *fractal);
+void	handle_pixel(int x, int y, t_fractal *fractal);
 
 //math
 double	conv_scale(double pixel_coord, double new_max, double new_min, double old_max);
 t_complex	calc_mandelbrot(t_complex z1, t_complex z2);
+
 
 
 #endif
