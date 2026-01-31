@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:55:40 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/30 06:19:33 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/31 14:14:42 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,16 @@
 void	data_init(t_fractal *fractal)
 {
 	fractal->escape_value = 4;
-	fractal->iterations_definition = 80;
+	fractal->iterations_definition = 42;
+	fractal->x_offset = 0;
+	fractal->y_offset = 0;
+}
+
+static void	events_init(t_fractal *fractal)
+{
+	// mlx_hook(fractal->window, KeyPress, KeyPressMask, handler_arrows, fractal);
+	mlx_hook(fractal->window, KeyPress, KeyPressMask, handle_arrows, fractal);
+	
 }
 
 void	fractal_init(t_fractal *fractal)
@@ -35,6 +44,6 @@ void	fractal_init(t_fractal *fractal)
 													&fractal->img.bits_per_pixel,
 													&fractal->img.line_len,
 													&fractal->img.endian);
-	// events_init() // TODO
+	events_init(fractal);
 	data_init(fractal);
 }

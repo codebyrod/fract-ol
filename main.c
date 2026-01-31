@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:26:10 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/30 06:20:13 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:44:18 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ int	main()
 	// mlx_destroy_display(fractal.connection);
 	// mlx_destroy_window(fractal.connection, fractal.window);
 	mlx_loop(fractal.connection);
-	// mlx_hook(fractal.)
 }

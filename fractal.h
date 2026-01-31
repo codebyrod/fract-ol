@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 07:40:56 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/30 06:24:33 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/31 14:15:45 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@
 
 #include "minilibx-linux/mlx.h"
 #include "X11/keysym.h"
+#include "X11/X.h"
 
 #include <stdio.h> //APAGAR
 #include <stdlib.h>
+#include <unistd.h>
+#include <math.h>
+
 
 typedef unsigned char byte;
 
@@ -73,6 +77,9 @@ typedef struct s_fractal
 	double	escape_value;
 	double	iterations_definition;
 	double	hipotenusa;
+	double	x_offset;
+	double	y_offset;
+	
 	
 }	t_fractal;
 
@@ -93,16 +100,20 @@ typedef struct s_conv_scale
 
 //init
 void	fractal_init(t_fractal *fractal);
-void	data_init(t_fractal *fractal);
+// void	data_init(t_fractal *fractal);
+// void	events_init(t_fractal *fractal);
 
 //render
 void	fractal_render(t_fractal *fractal);
-void	handle_pixel(int x, int y, t_fractal *fractal);
+// void	handle_pixel(int x, int y, t_fractal *fractal);
 
 //math
 double	conv_scale(double pixel_coord, double new_max, double new_min, double old_max);
 t_complex	calc_mandelbrot(t_complex z1, t_complex z2);
 
+
+//events
+int	handle_arrows(int keysym, t_fractal *fractol);
 
 
 #endif
