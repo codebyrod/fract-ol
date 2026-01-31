@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:11:45 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/31 14:01:01 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/31 18:09:51 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	z.y = 0.0;
 	
 	//pixel coordenadas
-	c.x = conv_scale(x, -2, 2, WIDTH) + fractal->x_offset;
-	c.y = conv_scale(y, 2, -2, HEIGHT) + fractal->y_offset;
+	c.x = (conv_scale(x, -2, 2, WIDTH) * fractal->zoom) + fractal->x_offset;
+	c.y = (conv_scale(y, 2, -2, HEIGHT) * fractal->zoom) + fractal->y_offset;
 	
 	// printf("Estou na handle: 1\n");
 	while(i < fractal->iterations_definition)

@@ -6,12 +6,12 @@
 #    By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/24 07:25:17 by rosousa-          #+#    #+#              #
-#    Updated: 2026/01/31 12:09:54 by rosousa-         ###   ########.fr        #
+#    Updated: 2026/01/31 16:53:20 by rosousa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # 1. Nomes e Caminhos
-NAME        = fractal
+NAME        = fractol
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 MLX_DIR     = ./minilibx-linux

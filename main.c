@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:26:10 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/30 06:44:18 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/31 16:45:19 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main()
 {
 	t_fractal fractal; //Mudar para fractral
 	printf("Estou na main \n");
+	fractal.name_window = "Janela";
 	fractal_init(&fractal);
 	printf("Estou na main: passei do frac_init \n");
 	fractal_render(&fractal);
