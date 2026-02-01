@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:11:45 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/02/01 20:00:11 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:56:35 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,3 @@ void	fractal_render(t_fractal *fractal)
 							fractal->img.img_ptr,
 							0, 0);
 }
-

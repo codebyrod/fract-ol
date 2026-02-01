@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 11:41:52 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/31 23:11:03 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:47:51 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	handle_arrows(int keysym, t_fractal *fractal)
 }
 
 
-// int (*f)(int button, int x, int y, void *param)
 int	handle_mouse(int button, int x, int y, t_fractal *fractal)
 {
 	(void)fractal;
