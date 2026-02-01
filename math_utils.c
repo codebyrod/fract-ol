@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 21:57:46 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/31 17:48:06 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/31 23:11:09 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ double conv_scale(double pixel_coord, double new_max, double new_min, double old
 	return (n.final_coord);
 }
 
-t_complex	calc_mandelbrot(t_complex z1, t_complex z2)
+t_complex	calc_fractal(t_complex z1, t_complex z2)
 {
 	double	temp;
 	t_complex result;
@@ -44,33 +44,3 @@ t_complex	calc_mandelbrot(t_complex z1, t_complex z2)
 	return (result);
 }
 
-// t_complex   square_and_sum(t_complex z, t_complex c)
-// {
-//     t_complex   result;
-
-//     // Parte Real: (x² - y²) + c.x
-//     result.x = (z.x * z.x) - (z.y * z.y) + c.x;
-    
-//     // Parte Imaginária: (2 * x * y) + c.y
-//     result.y = (2 * z.x * z.y) + c.y;
-
-//     return (result);
-// }
-
-// t_complex   sum_cpx(t_complex z1, t_complex z2)
-// {
-//     t_complex   result;
-
-//     result.x = z1.x + z2.x;
-//     result.y = z1.y + z2.y;
-//     return result;
-// }
-
-// t_complex   square_cpx(t_complex z)
-// {
-//     t_complex   result;
-    
-//     result.x = (z.x * z.x) - (z.y * z.y);
-//     result.y = 2 * z.x * z.y;
-//     return result;
-// }

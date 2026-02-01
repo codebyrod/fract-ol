@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:11:45 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/31 18:09:51 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/31 23:11:05 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	my_pixel_put(t_img *img, int x, int y, int color)
 	// *(unsigned int *)(offset + img->img_pixels_ptr) = color;
 }
 
+// void set_data()
+
 static void	handle_pixel(int x, int y, t_fractal *fractal)
 {
 	t_complex	z;
@@ -59,30 +61,27 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.x = 0.0;
 	z.y = 0.0;
-	
-	//pixel coordenadas
 	c.x = (conv_scale(x, -2, 2, WIDTH) * fractal->zoom) + fractal->x_offset;
 	c.y = (conv_scale(y, 2, -2, HEIGHT) * fractal->zoom) + fractal->y_offset;
-	
-	// printf("Estou na handle: 1\n");
+	if(!ft_strscmp("julia", fractal->name_window))
+	{
+		z.x = c.x;
+		z.y = c.y;
+		c.x = fractal->julia_c_x;
+		c.y = fractal->julia_c_y;
+	}
 	while(i < fractal->iterations_definition)
 	{
-		z = calc_mandelbrot(z, c);
-		// printf("[%d]: Valor de Z.X: %f\n", i, z.x);
-		// printf("[%d]: Valor de Z.Y: %f\n", i, z.y);
+		z = calc_fractal(z, c);
 		fractal->hipotenusa = (z.x * z.x) * (z.y * z.y);
-		// printf("Estou na handle: 2\n");
-		// printf("Hipostenusa: %f\n", fractal->hipotenusa);
 		if(fractal->hipotenusa > fractal->escape_value)
 		{
 			color = conv_scale(i, 0x000000, MAGENTA_BURST, fractal->iterations_definition);
-			// printf("Estou na handle: 3\n");
 			my_pixel_put(&fractal->img, x, y, color);
 			return;
 		}
 		i++;
 	}
-	// color = conv_scale(i, BLUE, RED, fractal->iterations_definition);
 	my_pixel_put(&fractal->img, x, y, LIME_SHOCK);
 }
 

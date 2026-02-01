@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 07:40:56 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/31 18:05:28 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/31 23:11:10 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ typedef struct s_fractal
 	double	x_offset;
 	double	y_offset;
 	double	zoom;
+	// double	mandelbrot_z_x;
+	// double	mandelbrot_z_y;
+	double	julia_c_x;
+	double	julia_c_y;
 	
 }	t_fractal;
 
@@ -99,7 +103,7 @@ typedef struct s_conv_scale
 //FUNÇÕES DE ESTUDO
 
 //init
-void	fractal_init(t_fractal *fractal);
+void	fractal_init(t_fractal *fractal, int ac, char **av);
 // void	data_init(t_fractal *fractal);
 // void	events_init(t_fractal *fractal);
 
@@ -109,12 +113,24 @@ void	fractal_render(t_fractal *fractal);
 
 //math
 double	conv_scale(double pixel_coord, double new_max, double new_min, double old_max);
-t_complex	calc_mandelbrot(t_complex z1, t_complex z2);
-
+t_complex	calc_fractal(t_complex z1, t_complex z2);
 
 //events
 int	handle_arrows(int keysym, t_fractal *fractol);
 int	handle_mouse(int button, int x, int y, t_fractal *fractal);
+
+//string utils
+double	ft_atodou(const char *str);
+double	calc_double(const char *str);
+int	ft_strscmp(char *str1, char *str2);
+void	ft_putstr_fd(char *str, int fd);
+
+//parsing
+void	verify_args(int ac, char **av);
+
+//error
+void	message_error(void);
+
 
 
 #endif

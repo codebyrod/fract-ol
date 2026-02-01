@@ -6,19 +6,25 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:55:40 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/01/31 18:08:32 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/01/31 22:46:07 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-void	data_init(t_fractal *fractal)
+void	data_init(t_fractal *fractal, int ac, char **av)
 {
+	fractal->name_window = av[1];
 	fractal->escape_value = 4;
-	fractal->iterations_definition = 42;
+	fractal->iterations_definition = 80;
 	fractal->x_offset = 0;
 	fractal->y_offset = 0;
 	fractal->zoom = 1;
+	if(ac == 4)
+	{
+		fractal->julia_c_x = ft_atodou(av[2]);
+		fractal->julia_c_y = ft_atodou(av[3]);
+	}
 }
 
 static void	events_init(t_fractal *fractal)
@@ -30,9 +36,9 @@ static void	events_init(t_fractal *fractal)
 	
 }
 
-void	fractal_init(t_fractal *fractal)
+void	fractal_init(t_fractal *fractal, int ac, char **av)
 {
-	printf("Estou na f_inti\n");
+	data_init(fractal, ac, av);
 	fractal->connection = mlx_init();
 	// verificar se deu certo, se deu errado free;
 	fractal->window = mlx_new_window(fractal->connection,
@@ -49,7 +55,6 @@ void	fractal_init(t_fractal *fractal)
 													&fractal->img.line_len,
 													&fractal->img.endian);
 	
-	printf("Estou na f_inti2\n");
 	events_init(fractal);
-	data_init(fractal);
+	
 }
