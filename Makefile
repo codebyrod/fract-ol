@@ -6,7 +6,7 @@
 #    By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/24 07:25:17 by rosousa-          #+#    #+#              #
-#    Updated: 2026/01/31 23:11:07 by rosousa-         ###   ########.fr        #
+#    Updated: 2026/02/02 10:56:46 by rosousa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC         = main.c \
               events.c \
               error.c \
               string_utils.c \
+              parse.c \
 
 OBJ         = $(SRC:.c=.o)
 

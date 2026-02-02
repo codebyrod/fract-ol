@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:11:45 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/02/01 20:00:11 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/02/02 14:23:20 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,26 @@
 
 static void	my_pixel_put(t_img *img, int x, int y, int color)
 {
-	// int	offset;
-	// printf("Estou na my_pixel: 1\n");
-	int	displacement; //DESLOCAMENTO
-	int conv_bit_to_byte; //CONVERTE BIT EM BYTES
-	char *addr_to_drawing; //ENDEREÇO PARA ESCREVER
-	unsigned int *int_addr_drawing; //ENDEREÇO DO BLOCO PARA ESCREVER
-	
-	//CONVERTEMOS O BIT PARA BYTE
-	conv_bit_to_byte = (img->bits_per_pixel / 8);
-	// printf("Estou na my_pixel: 2\n");
-	
-	//CALCULAMOS O PIXEL DE ONDE IREMOS PINTAR
-	displacement = (img->line_len * y) + (x * conv_bit_to_byte);
-	// printf("Estou na my_pixel: 3\n");
-	
-	//FAZEMOS ARITMÉTICA DE PONTEIRO PARA IR ATÉ O PIXEL
-	addr_to_drawing = displacement + img->img_pixels_ptr;
-	// printf("Estou na my_pixel: 4\n");
-	
-	*(unsigned int *)addr_to_drawing = color;
-	// printf("Estou na my_pixel: 5\n");
-	
-	// CONVERTEMOS O CHAR * PARA INT *
-	int_addr_drawing = (unsigned int *)(addr_to_drawing);
-	// printf("Estou na my_pixel: 5\n");
-	
-	//DESREFERENCIAMOS PARA SETAR A NOVA COR;
-	*int_addr_drawing = (unsigned int)color;
-	// printf("Estou na my_pixel: 6\n");
+	int				displacement;
+	int				conv_bit_to_byte;
+	char			*addr_to_drawing;
+	unsigned int	*int_addr_drawing;
 
-	// TUDO ACIMA PODE SER RESUMIDO NESSAS DUAS LINHAS
-	// offset = (img->line_len * y) + (x * (img->bits_per_pixel / 8));
-	// *(unsigned int *)(offset + img->img_pixels_ptr) = color;
+	conv_bit_to_byte = (img->bits_per_pixel / 8);
+	displacement = (img->line_len * y) + (x * conv_bit_to_byte);
+	addr_to_drawing = displacement + img->img_pixels_ptr;
+	*(unsigned int *)addr_to_drawing = color;
+	int_addr_drawing = (unsigned int *)(addr_to_drawing);
+	*int_addr_drawing = (unsigned int)color;
 }
 
-void	set_data(int x, int y, t_complex *z, t_complex *c, t_fractal *fractal)
+void	set_data(t_coord cd, t_cpx *z, t_cpx *c, t_fractal *fractal)
 {
 	z->x = 0.0;
 	z->y = 0.0;
-	c->x = (conv_scale(x, -2, 2, WIDTH) * fractal->zoom) + fractal->x_offset;
-	c->y = (conv_scale(y, 2, -2, HEIGHT) * fractal->zoom) + fractal->y_offset;
-	if(!ft_strscmp("julia", fractal->name_window))
+	c->x = (conv_scale(cd.x, 2, -2, WIDTH) * fractal->zoom) + fractal->x_disp;
+	c->y = (conv_scale(cd.y, -2, 2, HEIGHT) * fractal->zoom) + fractal->y_disp;
+	if (!ft_strscmp("Julia", fractal->name_window))
 	{
 		z->x = c->x;
 		z->y = c->y;
@@ -64,51 +42,49 @@ void	set_data(int x, int y, t_complex *z, t_complex *c, t_fractal *fractal)
 	}
 }
 
-static void	handle_pixel(int x, int y, t_complex z, t_complex c, t_fractal *fractal)
+static void	handle_pixel(t_coord cd, t_cpx z, t_cpx c, t_fractal *fractal)
 {
-	int			i;
-	int			color;
+	int	i;
+	int	color;
 
 	i = 0;
-	set_data(x, y, &z, &c, fractal);
-	while(i < fractal->iterations_definition)
+	set_data(cd, &z, &c, fractal);
+	while (i < fractal->it_def)
 	{
 		z = calc_fractal(z, c);
 		fractal->hipotenusa = (z.x * z.x) + (z.y * z.y);
-		if(fractal->hipotenusa > fractal->escape_value)
+		if (fractal->hipotenusa > fractal->escape_value)
 		{
-			color = conv_scale(i, 0x000000, MAGENTA_BURST, fractal->iterations_definition);
-			my_pixel_put(&fractal->img, x, y, color);
-			return;
+			color = conv_scale(i, 0xFFFFFF, MAGENTA_BURST, fractal->it_def);
+			my_pixel_put(&fractal->img, cd.x, cd.y, color);
+			return ;
 		}
 		i++;
 	}
-	my_pixel_put(&fractal->img, x, y, LIME_SHOCK);
+	my_pixel_put(&fractal->img, cd.x, cd.y, LIME_SHOCK);
 }
 
 void	fractal_render(t_fractal *fractal)
 {
-	t_complex	z;
-	t_complex	c;
-	int	x;
-	int	y;
+	t_cpx		z;
+	t_cpx		c;
+	t_coord		coord;
 
 	(void)z.x;
 	(void)c.x;
-	x = 0;
-	while (x < WIDTH)
+	coord.x = 0;
+	while (coord.x < WIDTH)
 	{
-		y = 0;
-		while (y < HEIGHT)
+		coord.y = 0;
+		while (coord.y < HEIGHT)
 		{
-			handle_pixel(x, y, z, c, fractal);
-			y++;
+			handle_pixel(coord, z, c, fractal);
+			coord.y++;
 		}
-		x++;
+		coord.x++;
 	}
 	mlx_put_image_to_window(fractal->connection,
-							fractal->window,
-							fractal->img.img_ptr,
-							0, 0);
+		fractal->window,
+		fractal->img.img_ptr,
+		0, 0);
 }
-
