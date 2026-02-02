@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 21:57:46 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/02/02 10:23:46 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:17:04 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ t_cpx	calc_fractal(t_cpx z1, t_cpx z2)
 	result.x = temp + z2.x;
 	return (result);
 }
-

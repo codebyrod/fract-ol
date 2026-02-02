@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 20:37:01 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/02/02 14:25:14 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:14:25 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	message_error(void)
 	ft_putstr_fd("| ./fractol Julia -0.835 -0.2321         |\n", STDERR_FILENO);
 	ft_putstr_fd("| ./fractol Julia 0.285  0.01            |\n", STDERR_FILENO);
 	ft_putstr_fd("└────────────────────────────────────────┘\n", STDERR_FILENO);
-
 	exit (EXIT_FAILURE);
 }
 
