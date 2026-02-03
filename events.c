@@ -6,15 +6,11 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 11:41:52 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/02/02 16:11:31 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/02/03 15:19:52 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
-#include "minilibx-linux/mlx.h"
-#include <X11/X.h>
-#include <unistd.h>
-#include <stdlib.h>
 
 int	close_handler(t_fractal *fractal)
 {
@@ -43,7 +39,6 @@ int	handle_arrows(int keysym, t_fractal *fractal)
 
 int	handle_mouse(int button, int x, int y, t_fractal *fractal)
 {
-	(void)fractal;
 	(void)x;
 	(void)y;
 	if (button == Button5)

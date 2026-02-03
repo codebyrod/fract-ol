@@ -6,7 +6,7 @@
 /*   By: rosousa- <rosousa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 07:40:56 by rosousa-          #+#    #+#             */
-/*   Updated: 2026/02/02 14:20:37 by rosousa-         ###   ########.fr       */
+/*   Updated: 2026/02/03 15:19:58 by rosousa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@
 
 # define WIDTH	800
 # define HEIGHT	800
-
-// # define STDOUT_FILENO	1
-// # define STDERR_FILENO	2
 
 # define BLACK				0x000000
 # define WHITE				0xFFFFFF
